@@ -42,9 +42,13 @@
                                     </button>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="r2H-mg-20n">
                                         <rect key="frame" x="0.0" y="104.33333333333337" width="320" height="320"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="r2H-mg-20n" secondAttribute="height" multiplier="1:1" id="BUB-bF-rG3"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="bPd-hY-Ld1" appends="YES" id="3Gt-E2-eUa"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -64,14 +68,20 @@
                     <connections>
                         <outlet property="bookNameLabel" destination="lJt-VE-kAY" id="btX-NV-nqW"/>
                         <outlet property="nameTextField" destination="YZV-IC-Hw8" id="WRw-KW-AwR"/>
+                        <outlet property="photoImageView" destination="r2H-mg-20n" id="Ubj-dr-m9X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bPd-hY-Ld1">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="sQy-HS-FR5"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="132.58928571428572"/>
         </scene>
     </scenes>
     <resources>
-        <image name="defaultPhoto" width="306" height="306"/>
+        <image name="defaultPhoto" width="540" height="540"/>
     </resources>
 </document>
