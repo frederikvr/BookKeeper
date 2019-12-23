@@ -14,6 +14,7 @@ class ViewController: UIViewController,UITextFieldDelegate,UIImagePickerControll
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var ratingControl: RatingControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,10 +70,6 @@ class ViewController: UIViewController,UITextFieldDelegate,UIImagePickerControll
         // the method asks ViewController to present the view controller defined by imagePickerController
         // completion param refers to completion handler, executes after this method completes. we don't need to do anything else so completion == nil
         present(imagePickerController, animated: true, completion: nil)
-    }
-
-    @IBAction func setDefaultLabelText(_ sender: UIButton) {
-        bookNameLabel.text = "Default Text"
     }
 }
 

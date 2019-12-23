@@ -13,6 +13,8 @@
 		B61D0D9F23AE5872005E2C7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B61D0D9E23AE5872005E2C7A /* Assets.xcassets */; };
 		B61D0DA223AE5872005E2C7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B61D0DA023AE5872005E2C7A /* LaunchScreen.storyboard */; };
 		B61D0DAD23AE5873005E2C7A /* BookKeeper2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D0DAC23AE5873005E2C7A /* BookKeeper2Tests.swift */; };
+		B6A76ABA23AFD79C00D9D446 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A76AB923AFD79C00D9D446 /* RatingControl.swift */; };
+		B6A76ABC23B13D9700D9D446 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A76ABB23B13D9700D9D446 /* Book.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		B61D0DA823AE5873005E2C7A /* BookKeeper2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookKeeper2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B61D0DAC23AE5873005E2C7A /* BookKeeper2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookKeeper2Tests.swift; sourceTree = "<group>"; };
 		B61D0DAE23AE5873005E2C7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6A76AB923AFD79C00D9D446 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		B6A76ABB23B13D9700D9D446 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 			children = (
 				B61D0D9723AE586F005E2C7A /* AppDelegate.swift */,
 				B61D0D9923AE586F005E2C7A /* ViewController.swift */,
+				B6A76AB923AFD79C00D9D446 /* RatingControl.swift */,
+				B6A76ABB23B13D9700D9D446 /* Book.swift */,
 				B61D0D9B23AE586F005E2C7A /* Main.storyboard */,
 				B61D0D9E23AE5872005E2C7A /* Assets.xcassets */,
 				B61D0DA023AE5872005E2C7A /* LaunchScreen.storyboard */,
@@ -197,7 +203,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6A76ABC23B13D9700D9D446 /* Book.swift in Sources */,
 				B61D0D9A23AE586F005E2C7A /* ViewController.swift in Sources */,
+				B6A76ABA23AFD79C00D9D446 /* RatingControl.swift in Sources */,
 				B61D0D9823AE586F005E2C7A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
