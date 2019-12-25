@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BookViewController.swift
 //  BookKeeper2
 //
 //  Created by Fred on 21/12/2019.
@@ -8,11 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    //MARK: Properties
+class BookViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var bookNameLabel: UILabel!
-    @IBOutlet weak var nameTextField: UITextField!
+    //MARK: Properties
+    @IBOutlet weak var bookNameTextField: UITextField!
+    @IBOutlet weak var authorTextField: UITextField!
+    @IBOutlet weak var genreTextField: UITextField!
+    @IBOutlet weak var pagesTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
     
@@ -21,7 +23,10 @@ class ViewController: UIViewController,UITextFieldDelegate,UIImagePickerControll
         
         // Handle the text field's user input through delegate callbacks
         // "self" refers to ViewController class, this works because we adopted the UITextFieldDelegate protocol in class declaration
-        nameTextField.delegate = self
+        bookNameTextField.delegate = self
+        authorTextField.delegate = self
+        genreTextField.delegate = self
+        pagesTextField.delegate = self
     }
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -33,7 +38,10 @@ class ViewController: UIViewController,UITextFieldDelegate,UIImagePickerControll
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         // this method is called after the textfield resigns it's FirstResponder status (FirstResponder means it's the main receiving object that moment)
-        bookNameLabel.text = textField.text
+        
+        if (textField == bookNameTextField)
+        {
+        }
     }
     //MARK: UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -56,7 +64,7 @@ class ViewController: UIViewController,UITextFieldDelegate,UIImagePickerControll
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         // Hide the keyboard
         // this code ensures that if the user taps the image view while typing in the text field, the keyboard is dismissed properly
-        nameTextField.resignFirstResponder()
+        bookNameTextField.resignFirstResponder()
         
         //UIImagePickerController is a view controller that lets a user pick media from their photo library
         let imagePickerController = UIImagePickerController()

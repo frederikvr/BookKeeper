@@ -11,15 +11,22 @@ import UIKit
 class Book{
     
     //MARK: Properties
-    var name: String
+    var bookName: String
+    var author: String
     var photo: UIImage?
     var rating: Int
+    var amountOfPages: Int
+    var genre: String?
     
     //MARK: Initialization
 
-    init?(name: String, photo:UIImage?,rating:Int) {
+    init?(bookName: String, photo:UIImage?,rating:Int, amountOfPages:Int, genre:String?, author: String) {
         // The name must not be empty
-        guard !name.isEmpty else {
+        guard !bookName.isEmpty else {
+            return nil
+        }
+        
+        guard !author.isEmpty else {
             return nil
         }
         
@@ -27,8 +34,15 @@ class Book{
         guard (rating >= 0) && (rating <= 5) else {
             return nil
         }
-        self.name = name
+        
+        guard (amountOfPages >= 0) else{
+            return nil
+        }
+        self.bookName = bookName
         self.photo = photo
         self.rating = rating
+        self.genre = genre
+        self.amountOfPages=amountOfPages
+        self.author = author
     }
 }
