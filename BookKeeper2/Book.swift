@@ -15,12 +15,12 @@ class Book{
     var author: String
     var photo: UIImage?
     var rating: Int
-    var amountOfPages: Int
+    var amountOfPages: Int?
     var genre: String?
     
     //MARK: Initialization
 
-    init?(bookName: String, photo:UIImage?,rating:Int, amountOfPages:Int, genre:String?, author: String) {
+    init?(bookName: String, photo:UIImage?,rating:Int, amountOfPages:Int?, genre:String?, author: String) {
         // The name must not be empty
         guard !bookName.isEmpty else {
             return nil
@@ -34,10 +34,7 @@ class Book{
         guard (rating >= 0) && (rating <= 5) else {
             return nil
         }
-        
-        guard (amountOfPages >= 0) else{
-            return nil
-        }
+
         self.bookName = bookName
         self.photo = photo
         self.rating = rating

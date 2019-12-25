@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Book Table View Controller-->
+        <!--Your Books-->
         <scene sceneID="jOI-rc-sbE">
             <objects>
                 <tableViewController id="Oha-FM-zhx" customClass="BookTableViewController" customModule="BookKeeper2" customModuleProvider="target" sceneMemberID="viewController">
@@ -47,6 +47,7 @@
                                     <outlet property="bookNameLabel" destination="WVA-jd-Ide" id="S5G-M0-gvS"/>
                                     <outlet property="photoImageView" destination="N8w-nJ-vuq" id="bAZ-bp-Gso"/>
                                     <outlet property="ratingControl" destination="kga-rG-Bti" id="1pL-dX-7CK"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="R5x-no-Rt9"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -55,13 +56,19 @@
                             <outlet property="delegate" destination="Oha-FM-zhx" id="mle-S2-Iny"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="X1Q-A9-FrU"/>
+                    <navigationItem key="navigationItem" title="Your Books" id="X1Q-A9-FrU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Qhk-jG-mAx">
+                            <connections>
+                                <segue destination="fBG-OK-wCt" kind="presentation" identifier="AddItem" id="bYK-GU-ib9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7km-i1-q3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="234.78260869565219" y="132.58928571428572"/>
         </scene>
-        <!--Book View Controller-->
+        <!--New Book-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="BookViewController" customModule="BookKeeper2" customModuleProvider="target" sceneMemberID="viewController">
@@ -70,7 +77,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Iid-db-2eC">
-                                <rect key="frame" x="20" y="64" width="374" height="524"/>
+                                <rect key="frame" x="20" y="108" width="374" height="524"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter book name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YZV-IC-Hw8">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -94,7 +101,7 @@
                                         <rect key="frame" x="0.0" y="114" width="374" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="r2H-mg-20n">
                                         <rect key="frame" x="27" y="152" width="320" height="320"/>
@@ -142,6 +149,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="New Book" id="ifn-yg-yvv">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eLv-lw-Ohf">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="G9W-T4-Z3C"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="WLK-cm-Hng">
+                            <connections>
+                                <segue destination="fGE-YW-BSQ" kind="unwind" unwindAction="unwindToBookListWithSender:" id="FWe-jW-8Ed"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorTextField" destination="OKg-s9-GLI" id="dj8-X4-n6j"/>
                         <outlet property="bookNameTextField" destination="YZV-IC-Hw8" id="WRw-KW-AwR"/>
@@ -149,16 +168,18 @@
                         <outlet property="pagesTextField" destination="bin-Jt-3n2" id="4DQ-3D-tzG"/>
                         <outlet property="photoImageView" destination="r2H-mg-20n" id="Ubj-dr-m9X"/>
                         <outlet property="ratingControl" destination="RUD-mR-dru" id="O5w-L9-67T"/>
+                        <outlet property="saveButton" destination="WLK-cm-Hng" id="rUd-2q-o6m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="fGE-YW-BSQ" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="bPd-hY-Ld1">
                     <connections>
                         <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="sQy-HS-FR5"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="132.58928571428572"/>
+            <point key="canvasLocation" x="1952.1739130434785" y="132.58928571428572"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5gB-c2-wY2">
@@ -178,8 +199,29 @@
             </objects>
             <point key="canvasLocation" x="-675.36231884057975" y="132.58928571428572"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cGt-eK-YDl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fBG-OK-wCt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LSM-ZJ-ODq">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="wmM-hV-pU9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ztw-Ta-tfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1087" y="485"/>
+        </scene>
     </scenes>
     <resources>
         <image name="defaultPhoto" width="540" height="540"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="R5x-no-Rt9"/>
+    </inferredMetricsTieBreakers>
 </document>
