@@ -43,7 +43,7 @@ class BookViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
             authorTextField.text = book.author
             photoImageView.image = book.photo
             ratingControl.rating = book.rating
-            pagesTextField.text = String(book.amountOfPages!)
+            pagesTextField.text = String(book.pages!)
             genreTextField.text = book.genre
         }
         
@@ -127,7 +127,7 @@ class BookViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
         let pages = Int(pagesTextField.text!) ?? 0
         let genre = genreTextField.text
         // Set the book to be passed to BookTableViewController after the unwind segue.
-        book = Book(bookName: bookName, photo: photo, rating: rating, amountOfPages: pages, genre: genre, author: author)
+        book = Book(bookName: bookName, photo: photo, rating: rating, pages: pages, genre: genre, author: author)
     }
     
     //MARK: Actions
