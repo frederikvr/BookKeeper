@@ -19,6 +19,9 @@ class BookViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+
+    
+    
     /*
      This value is either passed by 'BookTableViewController' in 'perpare(for:sender:)'
      or constructed as part of adding a new book.
@@ -35,8 +38,8 @@ class BookViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
         //genreTextField.delegate = self
         //pagesTextField.delegate = self
         
-        // Set up views if editing an existing Meal.
-        // if meal is not nil, this code will run
+        // Set up views if editing an existing Book.
+        // if book is not nil, this code will run
         if let book = book {
             navigationItem.title = book.bookName
             bookNameTextField.text = book.bookName
@@ -47,7 +50,7 @@ class BookViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
             genreTextField.text = book.genre
         }
         
-        // enable the Save button only if the bookName and Author text fields have a vvalid Book name.
+        // enable the Save button only if the bookName and Author text fields have a valid Book name.
         updateSaveButtonState()
     }
     
@@ -97,8 +100,8 @@ class BookViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
         // Depending on style of presentation (modal (= add button) or push presentation (=user tapped a table view cell), this view controller needs to be dismissed in two different ways
         
         // if the viewController is NavigationController, detail scene is presented by Add button. This is because the book detail scene is embedded in its own navigatoin controller
-        let isPresentingInAddMealMode = presentingViewController is UINavigationController
-        if isPresentingInAddMealMode {
+        let isPresentingInAddBookMode = presentingViewController is UINavigationController
+        if isPresentingInAddBookMode {
             // dismisses the modal scene and animates the transition back to the previous scene
             dismiss(animated: true, completion: nil)
         }
@@ -150,6 +153,26 @@ class BookViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
         present(imagePickerController, animated: true, completion: nil)
     }
     
+    @IBAction func shareButton(_ sender: UIBarButtonItem) {
+        //UIGraphicsBeginImageContext(view.frame.size)
+        //view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let bookNameForShare = "Book name: " + (bookNameTextField.text ?? "NoBookName")
+        let authorForShare = "Author: " + (authorTextField.text ?? "NoAuthor")
+        let genreForShare = "Genre: " + (genreTextField.text ?? "NoGenre")
+        let pagesForShare = "Pages: " + (pagesTextField.text ?? "NoPages")
+        let ratingForShare = "Rating: " + getRatingAsString(bookIconCount: ratingControl.rating)
+        let shareableBook = [bookNameForShare, authorForShare, genreForShare, pagesForShare, ratingForShare]
+        let activityVc = UIActivityViewController(activityItems: shareableBook, applicationActivities: nil)
+        activityVc.popoverPresentationController?.sourceView = self.view
+        present(activityVc, animated: true, completion: nil)
+        activityVc.completionWithItemsHandler = {(activityVc, completed:Bool, returnedItems:[Any]?, error: Error?) in
+            if completed {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+
+ 
     //MARK: Private Methods
     private func updateSaveButtonState(){
         // Disable the Save button if the text field is empty
@@ -160,6 +183,18 @@ class BookViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
         }
         else {
             saveButton.isEnabled = false
+        }
+    }
+    
+    private func getRatingAsString(bookIconCount : Int) -> String{
+        switch bookIconCount{
+        case 0: return "Even the last season of Game Of Thrones was better"
+        case 1: return "Worse than the new Star Wars movies"
+        case 2: return "Meh"
+        case 3: return "Not great, not terrible"
+        case 4: return "Preeetty good"
+        case 5: return "Best. Book. Ever."
+        default: fatalError("Rating is not between 0-5")
         }
     }
 }

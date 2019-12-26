@@ -36,8 +36,6 @@ class BookTableViewController: UITableViewController {
             // Load the sample data
             loadSampleBooks()
         }
-        
-       
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -163,7 +161,7 @@ class BookTableViewController: UITableViewController {
         guard let book2 = Book(bookName: "Gangreen 1", photo: photo2, rating: 3, pages: 211, genre: "Adventure novel", author: "Jef Geeraerts") else{
                 fatalError("Unable to instantiate book2")
             }
-        guard let book3 = Book(bookName: "The Outsider", photo: photo3, rating: 4, pages: 315, genre: "Existential Fiction", author: "Colin WIlson") else{
+        guard let book3 = Book(bookName: "The Outsider", photo: photo3, rating: 4, pages: 315, genre: "Existential Fiction", author: "Colin Wilson") else{
                 fatalError("Unable to instantiate book3")
             }
             
@@ -172,20 +170,34 @@ class BookTableViewController: UITableViewController {
     
     private func saveBooks(){
         // attempt to archive and return true if successful
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(books, toFile: Book.ArchiveURL.path)
+        do{
+        let data = try NSKeyedArchiver.archivedData(withRootObject: books, requiringSecureCoding: false)
+            try data.write(to: Book.ArchiveURL)
+            os_log("Books successfully saved.", log:OSLog.default, type: .debug)
+        } catch {
+            os_log("Failed to save books...", log:OSLog.default, type: .error)
+        }
+        
+        //let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(books, toFile: Book.ArchiveURL.path)
+        /*
         if isSuccessfulSave {
             os_log("Books successfully saved.", log:OSLog.default, type: .debug)
         }
         else {
             os_log("Failed to save books...", log:OSLog.default, type: .error)
-        }
+        }*/
     }
     
     // might return an array of books, might return nil
     private func loadBooks() -> [Book]?{
         // if the downcast fails, return nil. mostly happens when there is no data in DB yet
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Book.ArchiveURL.path) as? [Book]
-        
-        
+        //let rawdata = try Data{contentsOf: Book.ArchiveUrl.path}
+        if let data = try? Data(contentsOf: Book.ArchiveURL){
+            if let archivedData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Book]{
+                return archivedData
+            }
+            fatalError("No bookdata returned, this should not happen.")
+        }
+        fatalError("No bookdata returned, this should not happen.")
     }
 }

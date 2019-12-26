@@ -20,7 +20,7 @@ class Book: NSObject, NSCoding {
     var genre: String?
     
     //MARK: Archiving paths
-    // find documents directory
+    // find documents directory    
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("books")
     

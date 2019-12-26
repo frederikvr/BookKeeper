@@ -165,11 +165,18 @@
                                 <action selector="cancel:" destination="BYZ-38-t0r" id="G9W-T4-Z3C"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="WLK-cm-Hng">
-                            <connections>
-                                <segue destination="fGE-YW-BSQ" kind="unwind" unwindAction="unwindToBookListWithSender:" id="FWe-jW-8Ed"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="save" id="WLK-cm-Hng">
+                                <connections>
+                                    <segue destination="fGE-YW-BSQ" kind="unwind" unwindAction="unwindToBookListWithSender:" id="FWe-jW-8Ed"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="share" image="shareIcon" width="7" id="NxI-Ph-DpA">
+                                <connections>
+                                    <action selector="shareButton:" destination="BYZ-38-t0r" id="1A3-NC-ALU"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="authorTextField" destination="OKg-s9-GLI" id="dj8-X4-n6j"/>
@@ -230,8 +237,9 @@
     </scenes>
     <resources>
         <image name="defaultPhoto" width="540" height="540"/>
+        <image name="shareIcon" width="19" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wmM-hV-pU9"/>
+        <segue reference="R5x-no-Rt9"/>
     </inferredMetricsTieBreakers>
 </document>
