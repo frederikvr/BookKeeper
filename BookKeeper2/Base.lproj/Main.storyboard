@@ -26,22 +26,32 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="89.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="N8w-nJ-vuq">
-                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="N8w-nJ-vuq">
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="89.666666666666671"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="90" id="fsL-B6-VLa"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVA-jd-Ide">
+                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kga-rG-Bti" customClass="RatingControl" customModule="BookKeeper2" customModuleProvider="target">
+                                            <rect key="frame" x="98" y="35" width="252" height="44"/>
+                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVA-jd-Ide">
                                             <rect key="frame" x="98" y="6" width="296" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kga-rG-Bti" customClass="RatingControl" customModule="BookKeeper2" customModuleProvider="target">
-                                            <rect key="frame" x="98" y="35" width="252" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="kga-rG-Bti" firstAttribute="top" secondItem="WVA-jd-Ide" secondAttribute="bottom" constant="8" symbolic="YES" id="2Wj-Df-jb3"/>
+                                        <constraint firstItem="WVA-jd-Ide" firstAttribute="leading" secondItem="N8w-nJ-vuq" secondAttribute="trailing" constant="8" id="BUY-W3-LE4"/>
+                                        <constraint firstItem="N8w-nJ-vuq" firstAttribute="top" secondItem="seN-Nm-Lqd" secondAttribute="top" id="U2D-y0-GOt"/>
+                                        <constraint firstItem="N8w-nJ-vuq" firstAttribute="leading" secondItem="seN-Nm-Lqd" secondAttribute="leading" id="eFt-5k-XQ9"/>
+                                        <constraint firstItem="WVA-jd-Ide" firstAttribute="top" secondItem="seN-Nm-Lqd" secondAttribute="topMargin" constant="-5" id="hFO-F8-Ndc"/>
+                                        <constraint firstAttribute="trailing" secondItem="WVA-jd-Ide" secondAttribute="trailing" constant="20" id="q70-re-PBa"/>
+                                        <constraint firstItem="kga-rG-Bti" firstAttribute="leading" secondItem="N8w-nJ-vuq" secondAttribute="trailing" constant="8" symbolic="YES" id="qCy-mu-c9n"/>
+                                        <constraint firstItem="N8w-nJ-vuq" firstAttribute="centerY" secondItem="seN-Nm-Lqd" secondAttribute="centerY" id="zEg-Bq-l2n"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="bookNameLabel" destination="WVA-jd-Ide" id="S5G-M0-gvS"/>
@@ -222,6 +232,6 @@
         <image name="defaultPhoto" width="540" height="540"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="R5x-no-Rt9"/>
+        <segue reference="wmM-hV-pU9"/>
     </inferredMetricsTieBreakers>
 </document>
