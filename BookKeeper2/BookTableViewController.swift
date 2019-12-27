@@ -10,13 +10,28 @@ import UIKit
 import os.log
 
 class BookTableViewController: UITableViewController {
-    
     //Mark: Properties
     var books = [Book]()
+    
 
+    //MARK: Actions
+    @IBAction func sortButton(_ sender: UIBarButtonItem) {
+        let firstItem = books.first?.rating
+        let lastItem = books.last?.rating
+        
+        if (firstItem! < lastItem!){
+            books.sort(by: {$0.rating > $1.rating})
+        }
+        else{
+            books.sort(by: {$0.rating < $1.rating})
+        }
+        self.tableView.reloadData()
+        saveBooks()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Use the edit button item provided by the table view controller
         navigationItem.leftBarButtonItem = editButtonItem
         
@@ -164,8 +179,23 @@ class BookTableViewController: UITableViewController {
         guard let book3 = Book(bookName: "The Outsider", photo: photo3, rating: 4, pages: 315, genre: "Existential Fiction", author: "Colin Wilson") else{
                 fatalError("Unable to instantiate book3")
             }
-            
-        books+=[book1,book2,book3]
+        
+        guard let book4 = Book(bookName: "On The Road", photo: photo2, rating: 2, pages: 320, genre: "Fiction", author: "Jack Kerouac") else{
+            fatalError("Unable to instantiate book4")
+        }
+        
+        guard let book5 = Book(bookName: "Dracula", photo: photo1, rating: 0, pages: 488, genre: "Gothic", author: "Bram Stoker") else{
+            fatalError("Unable to instantiate book5")
+        }
+        
+        guard let book6 = Book(bookName: "De vijand", photo: photo3, rating: 5, pages: 302, genre: "Thriller", author: "Pieter Aspe") else{
+            fatalError("Unable to instantiate book6")
+        }
+        
+        guard let book7 = Book(bookName: "Of Mice and Men", photo: photo3, rating: 1, pages: 105, genre: "Novella", author: "John Steinbeck") else{
+            fatalError("Unable to instantiate book7")
+        }
+        books+=[book1,book2,book3,book4,book5,book6,book7]
     }
     
     private func saveBooks(){
@@ -177,15 +207,6 @@ class BookTableViewController: UITableViewController {
         } catch {
             os_log("Failed to save books...", log:OSLog.default, type: .error)
         }
-        
-        //let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(books, toFile: Book.ArchiveURL.path)
-        /*
-        if isSuccessfulSave {
-            os_log("Books successfully saved.", log:OSLog.default, type: .debug)
-        }
-        else {
-            os_log("Failed to save books...", log:OSLog.default, type: .error)
-        }*/
     }
     
     // might return an array of books, might return nil

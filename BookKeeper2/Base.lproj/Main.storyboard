@@ -66,13 +66,22 @@
                             <outlet property="delegate" destination="Oha-FM-zhx" id="mle-S2-Iny"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Your Books" id="X1Q-A9-FrU">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Qhk-jG-mAx">
-                            <connections>
-                                <segue destination="fBG-OK-wCt" kind="presentation" identifier="AddItem" id="bYK-GU-ib9"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="Qhk-jG-mAx">
+                                <connections>
+                                    <segue destination="fBG-OK-wCt" kind="presentation" identifier="AddItem" id="bYK-GU-ib9"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="sortIcon" width="10" id="iw6-fd-Ki8">
+                                <connections>
+                                    <action selector="sortButton:" destination="Oha-FM-zhx" id="zJ0-7m-HqS"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7km-i1-q3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -238,6 +247,7 @@
     <resources>
         <image name="defaultPhoto" width="540" height="540"/>
         <image name="shareIcon" width="19" height="27"/>
+        <image name="sortIcon" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="R5x-no-Rt9"/>
