@@ -100,23 +100,6 @@ class BookTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
 
     // MARK: Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -211,8 +194,7 @@ class BookTableViewController: UITableViewController {
     
     // might return an array of books, might return nil
     private func loadBooks() -> [Book]?{
-        // if the downcast fails, return nil. mostly happens when there is no data in DB yet
-        //let rawdata = try Data{contentsOf: Book.ArchiveUrl.path}
+        // if the downcast fails, return nil. happens when there is no data in DB yet
         if let data = try? Data(contentsOf: Book.ArchiveURL){
             if let archivedData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Book]{
                 return archivedData

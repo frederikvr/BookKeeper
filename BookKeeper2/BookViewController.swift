@@ -19,8 +19,6 @@ class BookViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-
-    
     
     /*
      This value is either passed by 'BookTableViewController' in 'perpare(for:sender:)'
@@ -35,9 +33,7 @@ class BookViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
         // "self" refers to ViewController class, this works because we adopted the UITextFieldDelegate protocol in class declaration
         bookNameTextField.delegate = self
         authorTextField.delegate = self
-        //genreTextField.delegate = self
-        //pagesTextField.delegate = self
-        
+ 
         // Set up views if editing an existing Book.
         // if book is not nil, this code will run
         if let book = book {
@@ -84,7 +80,7 @@ class BookViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
         dismiss(animated: true, completion: nil)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-// the info dictionary may contain multiple representations of the image. You want to use the original
+        // the info dictionary may contain multiple representations of the image. You want to use the original
         guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else
         {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info.description)")
@@ -154,8 +150,6 @@ class BookViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
     }
     
     @IBAction func shareButton(_ sender: UIBarButtonItem) {
-        //UIGraphicsBeginImageContext(view.frame.size)
-        //view.layer.render(in: UIGraphicsGetCurrentContext()!)
         let bookNameForShare = "Book name: " + (bookNameTextField.text ?? "NoBookName")
         let authorForShare = "Author: " + (authorTextField.text ?? "NoAuthor")
         let genreForShare = "Genre: " + (genreTextField.text ?? "NoGenre")
